@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="nav.cart">Корзина</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+
+<body data-page="cart">
+  <header class="header">
+    <div class="container header__row">
+      <a class="header__logo" href="index.html"><span class="logo-placeholder">Шаурма на мангале</span></a>
+      <div class="header__controls">
+        <select id="lang-select" class="lang-select">
+        <option value="ru">RU</option><option value="ky">KG</option><option value="en">EN</option>
+      </select>
+        <a href="cart.html" class="cart-link">🛒 <span data-i18n="nav.cart">Корзина</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:16px 0 32px">
+    <h1 data-i18n="cart.title">Оформление заказа</h1>
+
+    <!-- Список позиций -->
+    <section id="cart-list" style="display:grid; gap:12px; margin: 12px 0 16px"></section>
+
+    <!-- ИТОГО -->
+    <div class="card" style="padding:12px; margin-bottom:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <strong data-i18n="cart.total">Итого</strong>
+        <div id="cart-total" class="price">0 сом</div>
+      </div>
+    </div>
+
+    <!-- Форма -->
+    <form id="checkout-form" class="card" style="padding:12px; display:grid; gap:12px;">
+      <div>
+        <label class="muted" for="name" data-i18n="cart.name">Имя</label>
+        <input id="name" class="input" required>
+      </div>
+      <div>
+        <label class="muted" for="phone" data-i18n="cart.phone">Телефон</label>
+        <input id="phone" class="input" required inputmode="tel" placeholder="+996 (XXX) XX-XX-XX">
+      </div>
+      <div>
+        <label class="muted" for="note" data-i18n="cart.note">Комментарий</label>
+        <textarea id="note" class="input" rows="3" style="resize:vertical"></textarea>
+      </div>
+
+      <!-- Когда приготовить -->
+      <div class="card" style="padding:12px;">
+        <label class="muted" data-i18n="cart.when">Когда приготовить</label>
+        <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap">
+          <label class="filter-chip"><input type="radio" name="when" value="asap" checked><span data-i18n="cart.when.asap">Как можно быстрее</span></label>
+          <label class="filter-chip"><input type="radio" name="when" value="schedule"><span data-i18n="cart.when.schedule">Запланировать</span></label>
+        </div>
+        <div id="schedule-controls" style="display:none; margin-top:10px; gap:8px">
+          <input id="date" type="date" class="input" style="max-width:180px">
+          <input id="time" type="time" class="input" step="900" style="max-width:140px">
+        </div>
+      </div>
+
+      <div class="checkout-sticky">
+        <button id="submit-order" class="btn btn--primary" type="submit" data-i18n="cart.submit">Оформить заказ</button>
+      </div>
+    </form>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/checkout.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{
+  "app.title": "Шаурма на мангале",
+  "nav.cart": "Корзина",
+  "menu.search.placeholder": "Поиск...",
+  "menu.filter.available": "В наличии",
+  "menu.tags.veg": "Вегетарианское",
+  "menu.tags.spicy": "Острое",
+  "menu.tags.hit": "Хит",
+  "menu.outOfStock": "Нет в наличии",
+  "item.add": "В корзину",
+  "menu.empty": "Ничего не найдено",
+  "toast.added": "Добавлено в корзину"
+}

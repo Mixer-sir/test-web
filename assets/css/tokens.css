@@ -1,0 +1,94 @@
+/* Premium Dark UI: Cinematic Luxury
+   Переменные: цвета, шрифты, радиусы, тени, z-index, брейки */
+
+:root {
+  /* Dark Luxury Colors */
+  --cl-primary: #D4A017;
+  --cl-accent-1: #D61800;
+  --cl-accent-2: #EDAE01;
+  --cl-accent-3: #E94F08;
+
+  --cl-bg: #0D0D0D;
+  --cl-surface: #1A1A1A;
+  --cl-text: #F5F5F5;
+  --cl-muted: #8F8F8F;
+  --cl-border: #2A2A2A;
+  --cl-success: #2ea97c;
+  --cl-error: #e94f4f;
+
+  /* Gold Gradient & Neon */
+  --gradient-gold: linear-gradient(135deg, #D4A017, #B88907);
+  --glow-gold: 0 0 20px rgba(212, 160, 23, 0.4), 0 0 40px rgba(212, 160, 23, 0.2);
+  --glow-gold-intense: 0 0 30px rgba(212, 160, 23, 0.6), 0 0 60px rgba(212, 160, 23, 0.3), inset 0 0 20px rgba(212, 160, 23, 0.1);
+
+  /* Typography */
+  --ff-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-head: "Rubik", var(--ff-ui);
+
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-22: 22px;
+  --fs-28: 28px;
+
+  /* Spacing */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-10: 10px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+
+  /* Radius & Shadow - Cinematic iPhone-level Depth */
+  --radius-6: 6px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  
+  /* Premium depth shadows - iPhone lock screen card aesthetic */
+  --shadow-1: 0 4px 12px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(212, 160, 23, 0.08);
+  --shadow-2: 0 8px 32px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(212, 160, 23, 0.12);
+  --shadow-3: 0 12px 48px rgba(0, 0, 0, 0.6), 0 20px 80px rgba(214, 24, 0, 0.1);
+  --shadow-bloom: 0 0 1px rgba(255, 255, 255, 0.5) inset, 0 8px 32px rgba(212, 160, 23, 0.15), 0 0 60px rgba(212, 160, 23, 0.1);
+  --shadow-glow: 0 0 20px rgba(212, 160, 23, 0.3), 0 0 40px rgba(212, 160, 23, 0.15);
+  --shadow-fire: 0 0 16px rgba(214, 24, 0, 0.4), 0 0 32px rgba(233, 79, 8, 0.2);
+
+  /* Breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  /* Z-index */
+  --z-header: 10;
+  --z-toast: 30;
+  --z-modal: 40;
+}
+
+/* Subtle noise texture overlay */
+@property --noise-opacity {
+  syntax: '<number>';
+  initial-value: 0.02;
+  inherits: false;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}

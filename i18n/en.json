@@ -1,0 +1,13 @@
+{
+  "app.title": "Shawarma at the Mangal",
+  "nav.cart": "Cart",
+  "menu.search.placeholder": "Search...",
+  "menu.filter.available": "Available",
+  "menu.tags.veg": "Vegetarian",
+  "menu.tags.spicy": "Spicy",
+  "menu.tags.hit": "Hit",
+  "menu.outOfStock": "Out of stock",
+  "item.add": "Add to cart",
+  "menu.empty": "Nothing found",
+  "toast.added": "Added to cart"
+}

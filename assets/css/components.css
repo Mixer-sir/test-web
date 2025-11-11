@@ -1,0 +1,300 @@
+/* ======================  CATEGORIES: ONE LOOK (без особого стиля у "ВСЕ")  ====================== */
+
+.menu__categories {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0 14px;
+  margin: 0 -12px 16px;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  isolation: isolate;
+}
+
+.menu__categories::-webkit-scrollbar {
+  height: 6px
+}
+
+.menu__categories::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .08);
+  border-radius: 10px
+}
+
+.menu__categories .category-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  background: rgba(26, 26, 26, .35);
+  color: var(--cl-text);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  position: relative;
+  overflow: visible;
+  transition: .2s ease;
+  scroll-snap-align: start;
+}
+
+.menu__categories .category-btn.is-active {
+  background: linear-gradient(135deg, #F0C94A, #D3A017);
+  color: #111;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(212, 160, 23, .35);
+}
+
+.menu__categories .category-btn.is-active::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(50% 70% at 50% 50%, rgba(255, 193, 67, .42), transparent 70%);
+  filter: blur(8px);
+  opacity: .75;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.menu__categories .category-btn {
+  z-index: 1
+}
+.menu__categories .category-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 193, 67, .25)
+}
+
+/* ======================  КНОПКА ДОБАВЛЕНИЯ / СТЕППЕР  ====================== */
+
+/* Кнопка 'Добавить' — полегче визуально */
+.btn-add {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--gradient-gold);
+  color: #101010;
+  font-weight: 700;
+  letter-spacing: .3px;
+  border: none;
+  box-shadow: 0 8px 18px rgba(212,160,23,.25);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.btn-add:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(212,160,23,.35); }
+.btn-add:active { transform: translateY(0); }
+
+/* Степпер — только UI-косметика */
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26,26,26,.5);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 5px 8px;
+  border-radius: 999px;
+}
+.qbtn {
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(26,26,26,.65);
+  color: var(--cl-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+.qbtn:active { transform: translateY(1px); }
+.qvalue { min-width: 20px; text-align: center; font-weight: 700; color: var(--cl-text); }
+
+
+/* ======================  ЦЕНА: «сом» -> «с» на узких экранах  ====================== */
+
+/* Базовый вид — отображаем длинное имя валюты */
+.price .currency {
+  position: relative;
+  display: inline-block;
+  visibility: hidden;          /* скрываем реальный текст 'сом' */
+}
+.price .currency::after {
+  content: "сом";              /* рисуем поверх */
+  visibility: visible;
+  position: absolute;
+  inset: 0;
+}
+
+/* На узких — рисуем короткий символ 'с' */
+@media (max-width: 425px) {
+  .price .currency::after { content: "с"; }
+}
+
+
+/* ======================  TOASTS — ВНИЗУ, НЕ ПЕРЕКРЫВАЮТ UI  ====================== */
+
+.toast-container {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  right: auto;
+  top: auto;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  max-width: 90vw
+}
+
+/* ======================  КАРТЫ — чтобы glow/тени не обрезались  ====================== */
+
+.menu__filters,
+.menu__categories,
+.menu-toolbar,
+.menu-toolbar .wrap,
+.menu,
+.menu .container {
+  overflow: visible !important;
+  isolation: isolate
+}
+
+/* ===== Premium Card v2 (restore “luxury” look) ===== */
+
+/* базовый контейнер — стекло + мягкая тень + градиентная вуаль */
+.card {
+  position: relative;
+  background: var(--cl-surface);
+  border: 1px solid var(--cl-border);
+  border-radius: var(--radius-20);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(4px);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .35s cubic-bezier(.34,1.56,.64,1),
+              border-color .25s ease;
+}
+
+/* золотистая вуаль поверх контента (очень деликатно) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 80% at 10% -10%, rgba(255, 210, 90, .08), transparent 70%),
+    radial-gradient(90% 60% at 110% 10%, rgba(214, 24, 0, .05), transparent 65%);
+  opacity: .8;
+}
+
+/* hover: приподнимаем и усиливаем bloom */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 36px rgba(0,0,0,.45),
+    0 0 34px rgba(212,160,23,.25);
+  border-color: rgba(212,160,23,.28);
+}
+.card:hover .card__media { filter: brightness(1.08) }
+
+/* бейджи хитов/спайси/вег — как были */
+.card__badges {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+.card__badge{
+  display:inline-flex;align-items:center;
+  padding:7px 12px;border-radius:999px;
+  font-size: var(--fs-12);font-weight:700;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+.card__badge--hit{ background:rgba(214,24,0,.88);border-color:rgba(214,24,0,.55) }
+.card__badge--spicy{ background:rgba(233,79,8,.85);border-color:rgba(233,79,8,.55) }
+.card__badge--veg{ background:rgba(46,169,124,.85);border-color:rgba(46,169,124,.5) }
+
+/* тело карточки */
+.card__body {
+  padding: 18px 16px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card__title {
+  font-family: var(--ff-head);
+  font-size: var(--fs-16); font-weight: 800;
+  color: var(--cl-text); line-height: 1.28; margin: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+.card__desc {
+  margin: 0;
+  color: var(--cl-muted);
+  font-size: var(--fs-13); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* футер — компактный, но дыхание есть */
+.menu-card__footer {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: 12px;
+}
+
+/* цена — “золотом”, но спокойнее */
+.menu-card .price .value { color: var(--cl-primary); font-weight: 800; letter-spacing: .2px;}
+.menu-card .price .currency {
+  position: relative; display: inline-block; visibility: hidden;
+}
+.menu-card .price .currency::after {
+  content: "сом"; visibility: visible; position: absolute; inset: 0;
+}
+@media (max-width: 420px) {
+  .menu-card .price .currency::after { content: "с"; }
+}
+
+/* кнопка “Добавить” — лёгкая, но премиальная */
+.btn-add {
+  height: 36px; padding: 0 14px; border-radius: 10px;
+  background: var(--gradient-gold);
+  color: #101010; border: none; font-weight: 800; letter-spacing: .3px;
+  box-shadow: 0 10px 20px rgba(212,160,23,.28);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.btn-add:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(212,160,23,.38); }
+.btn-add:active { transform: translateY(0); }
+
+/* степпер — лаконичный */
+.qty-control {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 8px; border-radius:999px;
+  background: rgba(26,26,26,.5);
+  border:1px solid rgba(255,255,255,.12);
+}
+.qbtn{
+  width:32px;height:32px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: rgba(26,26,26,.7); color: var(--cl-text);
+  border:1px solid rgba(255,255,255,.14); cursor:pointer;
+  transition: transform .12s ease, box-shadow .2s ease;
+}
+.qbtn:hover { box-shadow: 0 0 0 3px rgba(212,160,23,.08); }
+.qbtn:active { transform: translateY(1px); }
+.qvalue { min-width: 20px; text-align: center; font-weight: 800; color: var(--cl-text); }
+
+/* overlay “нет в наличии” — стекло */
+.card__overlay {
+  position: absolute; inset: 0; display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.58); backdrop-filter: blur(3px); z-index: 3;
+}
+.card__overlay-text {
+  color:#fff; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
+  background: rgba(16,16,16,.55); padding:10px 14px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.1)
+}

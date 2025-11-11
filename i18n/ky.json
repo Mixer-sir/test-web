@@ -1,0 +1,13 @@
+{
+  "app.title": "Мангалдагы Шаурма",
+  "nav.cart": "Себет",
+  "menu.search.placeholder": "Издөө...",
+  "menu.filter.available": "Бар",
+  "menu.tags.veg": "Вегетариандык",
+  "menu.tags.spicy": "Кычкыл-таттуу",
+  "menu.tags.hit": "Хит",
+  "menu.outOfStock": "Жок",
+  "item.add": "Себетке кошуу",
+  "menu.empty": "Эч нерсе табылган жок",
+  "toast.added": "Себетке кошулду"
+}

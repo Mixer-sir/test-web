@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title data-i18n="app.title">Шаурма на мангале</title>
+  <meta name="description" content="Онлайн-меню и заказ еды — Шаурма на мангале">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rubik:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet is" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+
+<body data-page="menu">
+
+  <!-- ✅ HEADER -->
+  <header class="header">
+    <div class="container header__row">
+      <div class="header__logo">
+        <!-- временная заглушка лого -->
+        <span class="logo-placeholder">Шаурма на мангале</span>
+      </div>
+
+      <div class="header__controls">
+        <!-- Selector language -->
+        <select id="lang-select" class="lang-select">
+        <option value="ru">RU</option>
+        <option value="ky">KG</option>
+        <option value="en">EN</option>
+      </select>
+
+        <!-- Link to cart -->
+        <a href="cart.html" class="cart-link">
+          🛒 <span data-i18n="nav.cart">Корзина</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="menu">
+    <div class="container">
+
+      <!-- ✅ SEARCH -->
+      <div class="menu__search">
+        <input
+        id="search-input"
+        type="text"
+        class="input"
+        placeholder="Поиск..."
+        data-i18n-placeholder="menu.search.placeholder"
+      >
+      </div>
+
+      <!-- ✅ FILTER TAGS -->
+      <div class="menu__filters">
+        <label class="filter-chip">
+        <input type="checkbox" data-filter="available">
+        <span data-i18n="menu.filter.available">В наличии</span>
+      </label>
+
+        <label class="filter-chip">
+        <input type="checkbox" data-filter="veg">
+        <span data-i18n="menu.tags.veg">Вегетарианское</span>
+      </label>
+
+        <label class="filter-chip">
+        <input type="checkbox" data-filter="spicy">
+        <span data-i18n="menu.tags.spicy">Острое</span>
+      </label>
+
+        <label class="filter-chip">
+        <input type="checkbox" data-filter="hit">
+        <span data-i18n="menu.tags.hit">Хит</span>
+      </label>
+      </div>
+
+      <!-- ✅ CATEGORIES -->
+      <nav class="menu__categories">
+        <button class="category-btn" data-category="all">ВСЕ</button>
+        <button class="category-btn" data-category="shawarma">Шаурма</button>
+        <button class="category-btn" data-category="hot">Горячее</button>
+        <button class="category-btn" data-category="salad">Салаты</button>
+        <button class="category-btn" data-category="drinks">Напитки</button>
+        <button class="category-btn" data-category="desserts">Десерты</button>
+      </nav>
+
+      <!-- ✅ MENU GRID -->
+      <section id="menu-grid" class="menu__grid">
+        <!-- JS inserts cards here -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ✅ Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ✅ JS -->
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/menu.js"></script>
+
+</body>
+
+</html>

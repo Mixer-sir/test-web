@@ -1,0 +1,311 @@
+/* Локальные доработки страниц (минимум)
+   Cinematic Luxury Design */
+
+/* Page-specific styling */
+.menu__grid .card .btn--card {
+  height: 40px;
+  padding: 0 12px;
+  font-size: var(--fs-14);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  border-radius: var(--radius-12);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.menu__grid .card .price {
+  color: var(--cl-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-size: 18px;
+}
+
+/* Header enhancement */
+.header {
+  border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+}
+
+/* Cart list layout */
+#cart-list {
+  display: grid;
+  gap: 12px;
+}
+
+/* Sticky CTA on mobile */
+@media (max-width: 768px) {
+  .checkout-sticky {
+    position: sticky;
+    bottom: 12px;
+    z-index: 5;
+    background: transparent;
+    padding-top: 12px;
+  }
+
+  .checkout-sticky .btn {
+    width: 100%;
+    font-size: var(--fs-16);
+  }
+}
+
+/* Fade-in items */
+.cart-item {
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Modal styling */
+.modal {
+  background: var(--cl-surface);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: var(--radius-20);
+  box-shadow: var(--shadow-bloom);
+  backdrop-filter: blur(12px);
+}
+
+.modal__overlay {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+}
+
+.modal__title {
+  color: var(--cl-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: var(--sp-16);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--cl-text);
+  font-weight: 600;
+  font-size: var(--fs-13);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(212, 160, 23, 0.15);
+  border-radius: var(--radius-14);
+  background: rgba(26, 26, 26, 0.6);
+  color: var(--cl-text);
+  transition: all 0.22s ease;
+  backdrop-filter: blur(8px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--cl-muted);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(212, 160, 23, 0.3);
+  box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.08);
+  background: rgba(26, 26, 26, 0.8);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--cl-primary);
+  box-shadow: var(--glow-gold-intense);
+  background: rgba(26, 26, 26, 0.9);
+}
+
+.form-error {
+  color: #e94f4f;
+  font-size: var(--fs-12);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* Status page styling */
+.status-progress {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--sp-24);
+  justify-content: space-between;
+}
+
+.status-step {
+  flex: 1;
+  text-align: center;
+}
+
+.status-step__indicator {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 2px solid rgba(212, 160, 23, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--sp-8);
+  background: rgba(26, 26, 26, 0.6);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: 700;
+}
+
+.status-step__indicator.active {
+  border-color: var(--cl-primary);
+  background: var(--gradient-gold);
+  color: #0D0D0D;
+  box-shadow: var(--glow-gold-intense);
+  transform: scale(1.1);
+}
+
+.status-step__label {
+  font-size: var(--fs-12);
+  color: var(--cl-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+  transition: color 0.22s ease;
+}
+
+.status-step__indicator.active ~ .status-step__label {
+  color: var(--cl-primary);
+}
+
+/* Receipt button */
+.btn--receipt {
+  background: var(--gradient-gold);
+  color: #0D0D0D;
+  box-shadow: var(--glow-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn--receipt:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--glow-gold-intense);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: var(--sp-32);
+}
+
+.empty-state__icon {
+  font-size: 48px;
+  margin-bottom: var(--sp-12);
+  opacity: 0.6;
+}
+
+.empty-state__text {
+  color: var(--cl-muted);
+  margin-bottom: var(--sp-20);
+  font-size: var(--fs-16);
+}
+
+/* Ambient glow for cards */
+.card {
+  position: relative;
+}
+
+/* .card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+} */
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* Menu spacing refinement */
+@media (min-width: 768px) {
+  .menu {
+    padding: var(--sp-32) 0 var(--sp-40);
+  }
+}
+
+/* Premium spacing adjustment */
+.sp-10 {
+  gap: var(--sp-10);
+}
+
+@supports (gap: clamp(0.5rem, 1vw, 1rem)) {
+  .menu__grid {
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+}
+
+/* Сетка меню: ровная, адаптивная */
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: stretch;         /* важное — тянем все карточки по высоте */
+}
+
+/* Карточки тянем равномерно и фиксируем поведение футера */
+/* .menu-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+} */
+
+/* Медиа — сохраняем пропорцию, картинка всегда «в нём» */
+.menu-card .card__media-wrapper {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+}
+.menu-card .card__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Тело + футер: футер снизу */
+/* .menu-card .card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 auto;
+}
+.menu-card__footer {
+  margin-top: auto;             
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+} */
+@media (max-width: 520px) {
+  .menu-card__footer { flex-wrap: wrap; }
+}
