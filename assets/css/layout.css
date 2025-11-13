@@ -381,3 +381,12 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+
+.menu__categories{
+  display:flex; gap:10px;
+  overflow-x:auto; overflow-y:hidden;
+  padding:8px 0; scroll-snap-type: x proximity;
+}
+.menu__categories .category-btn{ flex:0 0 auto; scroll-snap-align:start; }
+.menu__categories::-webkit-scrollbar{ height:6px; }

@@ -111,3 +111,66 @@
     setTimeout(() => node.remove(), 2200);
   }
 })();
+
+import { getSummary, onCartChange } from './store.js';
+
+function updateSummary() {
+  const { total } = getSummary();
+  const el = document.getElementById('cart-total');
+  if (el) el.textContent = total;
+}
+// пересчитывать при изменениях
+onCartChange(updateSummary);
+// и сразу при загрузке
+updateSummary();
+
+const asapRadio  = document.getElementById('when-asap');
+const planRadio  = document.getElementById('when-plan');
+const planWrap   = document.getElementById('plan-fields');
+const planDate   = document.getElementById('plan-date');
+const planTime   = document.getElementById('plan-time');
+
+function fmtDate(d) { return d.toISOString().slice(0,10); }
+function pad2(n){ return n<10 ? '0'+n : ''+n; }
+
+function setPlanConstraints() {
+  const now = new Date();
+  const min15 = new Date(now.getTime() + 15 * 60 * 1000);   // +15 минут
+  const max14 = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000); // +14 дней
+
+  planDate.min = fmtDate(now);
+  planDate.max = fmtDate(max14);
+
+  // Если дата сегодня — время не меньше, чем через 15 минут
+  const chosen = planDate.value ? new Date(planDate.value + 'T00:00:00') : now;
+  if (fmtDate(chosen) === fmtDate(now)) {
+    planTime.min = `${pad2(min15.getHours())}:${pad2(min15.getMinutes())}`;
+  } else {
+    planTime.min = '00:00';
+  }
+}
+
+function applyWhenUI(){
+  if (planRadio.checked) {
+    planWrap.style.display = 'flex';
+    setPlanConstraints();
+  } else {
+    planWrap.style.display = 'none';
+    planDate.value = '';
+    planTime.value = '';
+  }
+}
+asapRadio?.addEventListener('change', applyWhenUI);
+planRadio?.addEventListener('change', applyWhenUI);
+planDate?.addEventListener('change', setPlanConstraints);
+applyWhenUI();
+
+function renderEmptyCart(){
+  const list = document.getElementById('cart-list');
+  list.innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state__icon">🛒</div>
+      <div class="empty-state__text">${t('cart.empty','В корзине пусто')}</div>
+      <a href="index.html" class="btn btn--primary">${t('cart.go_back','Вернуться в меню')}</a>
+    </div>`;
+}

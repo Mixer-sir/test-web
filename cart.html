@@ -28,57 +28,80 @@
     </div>
   </header>
 
-  <main class="container" style="padding:16px 0 32px">
-    <h1 data-i18n="cart.title">Оформление заказа</h1>
-
-    <!-- Список позиций -->
-    <section id="cart-list" style="display:grid; gap:12px; margin: 12px 0 16px"></section>
-
-    <!-- ИТОГО -->
-    <div class="card" style="padding:12px; margin-bottom:16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center">
-        <strong data-i18n="cart.total">Итого</strong>
-        <div id="cart-total" class="price">0 сом</div>
-      </div>
+  <main class="menu">
+    <div class="container cart-page">
+  
+      <!-- Summary sticky card -->
+      <section class="summary-sticky">
+        <div class="summary-sticky__label" data-i18n="cart.total">Итого</div>
+        <div class="summary-sticky__total"><span id="cart-total">0</span> сом</div>
+      </section>
+  
+      <!-- Cart list -->
+      <ul id="cart-list" class="cart-list" aria-label="Список товаров"></ul>
+  
+      <!-- Order form -->
+      <form id="order-form" novalidate class="order-form">
+        <div class="form-group">
+          <label for="fio">Имя</label>
+          <input id="fio" name="fio" type="text" placeholder="Ваше имя" required>
+          <div class="form-error" data-for="fio"></div>
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" placeholder="+996 (XXX) XX-XX-XX" required>
+          <div class="form-error" data-for="phone"></div>
+        </div>
+  
+        <div class="form-group">
+          <label for="comment">Комментарий</label>
+          <textarea id="comment" name="comment" rows="3" placeholder="Например: без лука"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <div class="legend">Когда приготовить</div>
+          <div class="when-row">
+            <label class="pill-radio">
+              <input type="radio" name="when" value="asap" checked>
+              <span>Как можно быстрее</span>
+            </label>
+  
+            <label class="pill-radio">
+              <input type="radio" name="when" value="plan">
+              <span>Запланировать</span>
+            </label>
+          </div>
+  
+          <div id="plan-controls" class="plan-controls hidden">
+            <div class="plan-grid">
+              <div>
+                <label for="plan-date">Дата</label>
+                <input type="date" id="plan-date" name="planDate">
+              </div>
+              <div>
+                <label for="plan-time">Время</label>
+                <input type="time" id="plan-time" name="planTime" step="300">
+              </div>
+            </div>
+            <small class="hint">Можно выбрать сегодня или в течение 14 дней, минимум через 15 минут от текущего времени.</small>
+          </div>
+        </div>
+  
+        <div class="checkout-sticky btn btn--primary btn--full">
+          <button id="btn-submit" type="submit" class="btn btn--primary btn--full">
+            Оформить заказ
+          </button>
+        </div>
+      </form>
     </div>
-
-    <!-- Форма -->
-    <form id="checkout-form" class="card" style="padding:12px; display:grid; gap:12px;">
-      <div>
-        <label class="muted" for="name" data-i18n="cart.name">Имя</label>
-        <input id="name" class="input" required>
-      </div>
-      <div>
-        <label class="muted" for="phone" data-i18n="cart.phone">Телефон</label>
-        <input id="phone" class="input" required inputmode="tel" placeholder="+996 (XXX) XX-XX-XX">
-      </div>
-      <div>
-        <label class="muted" for="note" data-i18n="cart.note">Комментарий</label>
-        <textarea id="note" class="input" rows="3" style="resize:vertical"></textarea>
-      </div>
-
-      <!-- Когда приготовить -->
-      <div class="card" style="padding:12px;">
-        <label class="muted" data-i18n="cart.when">Когда приготовить</label>
-        <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap">
-          <label class="filter-chip"><input type="radio" name="when" value="asap" checked><span data-i18n="cart.when.asap">Как можно быстрее</span></label>
-          <label class="filter-chip"><input type="radio" name="when" value="schedule"><span data-i18n="cart.when.schedule">Запланировать</span></label>
-        </div>
-        <div id="schedule-controls" style="display:none; margin-top:10px; gap:8px">
-          <input id="date" type="date" class="input" style="max-width:180px">
-          <input id="time" type="time" class="input" step="900" style="max-width:140px">
-        </div>
-      </div>
-
-      <div class="checkout-sticky">
-        <button id="submit-order" class="btn btn--primary" type="submit" data-i18n="cart.submit">Оформить заказ</button>
-      </div>
-    </form>
   </main>
 
   <div id="toast-container" class="toast-container"></div>
-  <script type="module" src="js/app.js"></script>
-  <script type="module" src="js/checkout.js"></script>
+  <script type="module" src="./js/i18n.js"></script>
+  <script type="module" src="./js/store.js"></script>
+  <script type="module" src="./js/ui.js"></script>
+  <script type="module" src="./js/cart.js"></script>
 </body>
 
 </html>
