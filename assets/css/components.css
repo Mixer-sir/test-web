@@ -151,13 +151,12 @@
 /* ======================  КАРТЫ — чтобы glow/тени не обрезались  ====================== */
 
 .menu__filters,
-.menu__categories,
 .menu-toolbar,
 .menu-toolbar .wrap,
 .menu,
 .menu .container {
   overflow: visible !important;
-  isolation: isolate
+  isolation: isolate;
 }
 
 /* ===== Premium Card v2 (restore “luxury” look) ===== */
@@ -351,6 +350,7 @@
   list-style: none;
   margin: 0 0 var(--sp-24);
   padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .cart-row {
@@ -485,3 +485,54 @@
 }
 .summary-sticky__label{ font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
 .summary-sticky__total{ font-weight:800; color: var(--cl-primary); }
+
+
+/* ========================================= */
+/* СТИЛИ ДЛЯ АКТИВНОЙ КНОПКИ ОФОРМЛЕНИЯ     */
+/* ========================================= */
+
+/* Базовый стиль для ВСЕХ кнопок */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--radius-14, 14px); /* Используем вашу переменную, если есть */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease;
+  }
+  
+  /* "Золотой" стиль для главной кнопки */
+  .btn--primary {
+    background: var(--gradient-gold, linear-gradient(135deg, #F0C94A, #D3A017));
+    color: #101010;
+    box-shadow: 0 8px 20px rgba(212,160,23,.3);
+  }
+  
+  /* Эффекты при наведении и нажатии */
+  .btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212,160,23,.45);
+  }
+  
+  .btn--primary:active {
+    transform: translateY(0);
+  }
+  
+  /* Стили для неактивной кнопки (У ВАС УЖЕ ЕСТЬ, но этот — лучше) */
+  .btn[disabled] {
+    opacity: .45;
+    cursor: not-allowed;
+    filter: grayscale(.3);
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  
+  /* Стиль "на всю ширину" (у вас он уже есть в @media) */
+  .btn--full {
+    width: 100%;
+  }

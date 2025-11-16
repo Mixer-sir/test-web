@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/components.css">
 </head>
 
 <body data-page="cart">
@@ -88,7 +88,7 @@
           </div>
         </div>
   
-        <div class="checkout-sticky btn btn--primary btn--full">
+        <div class="checkout-sticky">
           <button id="btn-submit" type="submit" class="btn btn--primary btn--full">
             Оформить заказ
           </button>
@@ -101,7 +101,14 @@
   <script type="module" src="./js/i18n.js"></script>
   <script type="module" src="./js/store.js"></script>
   <script type="module" src="./js/ui.js"></script>
-  <script type="module" src="./js/cart.js"></script>
+
+  <script type="module" src="js/checkout.js"></script>
 </body>
 
 </html>
+
+<script>
+  // И код, который ее активирует, например:
+  const phoneField = document.getElementById('phone');
+  IMask(phoneField, { mask: '+996 (000) 00-00-00' });
+</script>
