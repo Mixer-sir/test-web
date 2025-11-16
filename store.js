@@ -25,7 +25,7 @@ let _catalog = [
     cat: 'shawarma', 
     tags: [], 
     available: true, 
-    image: 'assets/img/item1.jpg' 
+    image: 'assets/img/item2.jpg' 
   },
   { 
     id: '3', 
@@ -35,7 +35,7 @@ let _catalog = [
     cat: 'shawarma', 
     tags: ['spicy'], 
     available: true, 
-    image: 'assets/img/item1.jpg' 
+    image: 'assets/img/item3.jpg' 
   },
   { 
     id: '4', 
@@ -45,7 +45,7 @@ let _catalog = [
     cat: 'shawarma', 
     tags: ['hit'], 
     available: true, 
-    image: 'assets/img/item1.jpg' 
+    image: 'assets/img/item4.jpg' 
   },
 
   /* ================== 🥗 САЛАТЫ (salad) ================== */
@@ -282,3 +282,4 @@ export function getSummary() {
 export function getCurrencySymbol(lang = 'ru') {
   return 'сом';
 }
+
